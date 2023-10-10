@@ -1,0 +1,19 @@
+1 - O programa deve ser capaz de lidar com expressões aritméticas básicas que envolvam operadores como adição (+), subtração (-), multiplicação (*), divisão (/) e parênteses para definir a precedência das operações.
+    Parênteses para definir a precedência das operações, em qualquer nível de aninhamento
+    Multiplicação (*) e divisão (/)
+    Adição (+) e subtração (-)
+2 - A análise da expressão e a construção da árvore de expressão devem ser feitas utilizando uma estrutura de árvore adequada. Cada nodo da árvore deve representar um operador aritméticos, nos nodos interiores ou um operando (número ou variável), nos nodos folha.
+3 - O avaliador deve utilizar valores em ponto-flutuante em precisão dupla para representar os valores
+4 - O programa deve ser capaz de lidar com expressões que contenham literais numéricos, nomes de variáveis e parênteses aninhados.
+5 - Os alunos devem implementar um mecanismo para atribuir valores às variáveis antes de avaliar as expressões que as utilizam usando a sintaxe "variavel = expressão".
+    Nomes de variáveis devem conter apenas letras (uma ou mais) e são case sensitive.
+    Atribuição à uma variável já definida deve substituir o seu valor
+6 - O programa deve fornecer uma interface do tipo REPL (Read-Eval-Print-Loop).
+    Ler continuamente uma string
+    Caso seja uma atribuição, avaliar a expressão à direita do operador de atribuição  e guardar seu valor na variável definida à sua esquerda
+    Caso seja apenas uma expressão, sem atribuição, avaliar e printar o seu valor resultante
+    Finalizar o loop quando for informado "exit"
+7 - A avaliação de expressões aritméticas pode envolver vários tipos de erros que devem ser tratados e exibidos ao usuário:.
+    Divisão por Zero: Se ocorrer uma divisão por zero em qualquer parte da expressão.
+    Variáveis não Inicializadas: Se uma variável for usada na expressão antes de ser atribuída, o programa deve detectar essa situação e informar qual variável não foi inicializada.
+    Erros de Sintaxe: Se a expressão contiver erros de sintaxe, como falta de operadores, parênteses desbalanceados ou caracteres inválidos, o programa deve fornecer uma mensagem de erro compreensível.
