@@ -2,9 +2,9 @@
 def verify_is_number(char:str) -> bool:
     try:
         float(char)
-        return True
-    except:
+    except ValueError:
         return False
+    return True
 
 class Node:
     """CRIA UM NOVO NODO"""
