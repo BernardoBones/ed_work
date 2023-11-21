@@ -1,9 +1,2 @@
-- TOKENIZAÇÃO
-    - ERRO DE PARÊNTESES
-
-
-- CRIAÇÃO DA ÁRVORE
-    
-
-- AVALIAR (REALIZAR CÁLCULO) ÁRVORE
-    - ERRO DE DIVISÃO POR ZERO
+- modo script (lê um arquivo e executa)
+- Opção para exibir a árvore de expressão

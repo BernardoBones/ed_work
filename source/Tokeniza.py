@@ -2,13 +2,6 @@ from source.Node import verify_is_number
 import re
 
 
-# def guarda_variavel(expressao:str, variaveis:dict):
-#     """RETORNA TUPLA COM CHAVE:VALOR DA VARIÁVEL"""
-#     var = expressao.split('=')[0].strip()
-#     valor = expressao.split('=')[1].strip()
-#     return (var, valor)
-
-
 class Token():
     def __init__(self ) -> None:
         self.SPECIALS = '()/*-–+'
