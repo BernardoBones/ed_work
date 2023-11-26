@@ -1,43 +1,16 @@
-from source.Tokeniza import Token
-# from source.Cria import 
-from source.Node import verify_is_number
+from source.Bot import * 
 
-def main():
+def main(): 
     variaveis = {}
     while True:
-        token = Token()
-        expressao = input()
-        if expressao.lower() == 'exit':
-            break
-        if '=' in expressao:
-            # ATRIBUIÇÃO DE VARIÁVEL
-            tokens = token.tokeniza_expressao(expressao.split('=')[1], variaveis) 
-            if tokens != []:
-                # var, valor = guarda_variavel(expressao, variaveis)
-                var = expressao.split('=')[0].strip()
-                # if len(tokens) > 1:
-                #     # variaveis[var] = criar_arvore(tokens)
-                # else:
-                variaveis[var] = tokens[0]
-               
-        elif expressao in variaveis.keys(): 
-            # PRINTAR VALOR DA VARIÁVEL
-            if verify_is_number(variaveis[expressao]):
-                # VALOR DA VARIÁVEL É UM NÚMERO
-                print(variaveis[expressao])
-            else:
-                # VALOR DA VARIÁVEL É UMA EXPRESSÃO ---- MONTAR ÁRVORE # E RESOLVER
-                tokens = token.tokeniza_expressao(variaveis[expressao], variaveis)  
-                # if tokens != []:
-                    # arvore = criar_arvore(tokens)
-                    # print(arvore[0])
-
-        else: # EXPRESSÃO
-            tokens = token.tokeniza_expressao(expressao, variaveis)  
-            if tokens != []:
-                # arvore = criar_arvore(tokens)
-                # print(arvore[0])
-                print(tokens)
+        select = input('Digite 1 para expressão/variável, 2 para ler um arquivo, Exit para sair:\n')
+        if select == '1':
+            bot_expressao(variaveis)
+        elif select == '2':
+            file_name = input('\nEscreva o nome do arquivo:\n')
+            bot_arquivo(variaveis, file_name)
+        else:
+            print('\nComando inválido!\n')
 
 
 main()

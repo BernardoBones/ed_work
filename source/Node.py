@@ -1,5 +1,5 @@
-
 def verify_is_number(char:str) -> bool:
+    """RETORNA SE O CHAR É UM NÚMERO"""
     try:
         float(char)
     except ValueError:
@@ -8,11 +8,7 @@ def verify_is_number(char:str) -> bool:
 
 class Node:
     """CRIA UM NOVO NODO"""
-    # CONSTRUTOR
-    def __init__(self, value, left=None, right=None) -> None:
-        # SE O VALOR FOR NUMERO, CONVERTE PARA FLOAT
-        self.value = float(value) if verify_is_number(value) else value
-
-        self.left = float(left) if verify_is_number(left) else left
-
-        self.right = float(right) if verify_is_number(right) else right 
+    def __init__(self, value) -> None:
+        self.value = value
+        self.left = None
+        self.right = None

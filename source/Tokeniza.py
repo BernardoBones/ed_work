@@ -2,13 +2,6 @@ from source.Node import verify_is_number
 import re
 
 
-# def guarda_variavel(expressao:str, variaveis:dict):
-#     """RETORNA TUPLA COM CHAVE:VALOR DA VARIÁVEL"""
-#     var = expressao.split('=')[0].strip()
-#     valor = expressao.split('=')[1].strip()
-#     return (var, valor)
-
-
 class Token():
     def __init__(self ) -> None:
         self.SPECIALS = '()/*-–+'
@@ -30,7 +23,7 @@ class Token():
         # VERIFICA SE TEM APENAS CHARS VALIDOS
         if ''.join(validos) == expressao:
             # FILTRA NÚMEROS E VARIÁVEIS
-            PADRAO_TOP = r'[-–+]?\b(?:\d+\.\d+|\d+)(?:[eE][-+]?\d+)?\b|\b[a-zA-Z_]\w*\b|\S'
+            PADRAO_TOP = r'\b(?:\d+\.\d+|\d+)(?:[eE][-+]?\d+)?\b|\b[a-zA-Z_]\w*\b|\S'
             
             elementos = re.findall(PADRAO_TOP, expressao)
             return (True, elementos)
