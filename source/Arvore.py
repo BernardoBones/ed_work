@@ -14,12 +14,17 @@ class Arvore:
         """PERCORRE RECURSIVAMENTE OS ELEMENTOS, CRIANDO SUBÁRVORES CASO NECESSÁRIO"""
         if not elementos:
             return None
+<<<<<<< HEAD
        
         try:
             current_element = elementos.pop(elementos.index('('))
         except:
             current_element = elementos.pop(0)
         
+=======
+        
+        current_element = elementos.pop(0)
+>>>>>>> 86b2b09f1008ede13e0f6eff6feea1b167fde9f2
 
         if current_element == "(":
             # CRIA SUBÁRVORE PROS ELEMENTOS DENTRO DOS PARÊNTESES
@@ -33,7 +38,11 @@ class Arvore:
         else:
             subtree_root = Node(current_element)
 
+<<<<<<< HEAD
         while (elementos != []) and (str(elementos[0]) in OPERADORES):
+=======
+        while elementos and str(elementos[0]) in OPERADORES:
+>>>>>>> 86b2b09f1008ede13e0f6eff6feea1b167fde9f2
             operator = elementos.pop(0)
 
             # CRIA SUBÁRVORE DA DIREITA
