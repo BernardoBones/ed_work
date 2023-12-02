@@ -61,16 +61,22 @@ class Token():
         mult = chars.count('*')
         div = chars.count('/')
         total = 0
+        parentheses_added = set()
 
-        while total < mult+div:
+        while total < mult + div:
+         
             for i in range(len(chars)):
-                
                 if chars[i] == '*' or chars[i] == '/':
-                    if chars[i-1] != '(' and chars[i-1] != ')' and chars[i+1] != '(' and chars[i+1] != ')':
-                        chars.insert(i-1,'(')
-                        chars.insert(i+3, ')')
-                        total+=1
-                        break
+                    if i not in parentheses_added:
+                        if chars[i - 1] != '(' and chars[i - 1] != ')' and chars[i + 1] != '(' and chars[i + 1] != ')':
+                            chars.insert(i - 1, '(')
+                            chars.insert(i + 3, ')')
+                            parentheses_added.add(i+1)
+                            break
+                        
+                        total += 1
+                     
+
         print(chars)
 
         return chars
