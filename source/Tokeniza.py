@@ -58,4 +58,19 @@ class Token():
                         print(f'Erro: Variável "{value}" não inicializada')
                         return []
 
+        mult = chars.count('*')
+        div = chars.count('/')
+        total = 0
+
+        while total < mult+div:
+            for i in range(len(chars)):
+                
+                if chars[i] == '*' or chars[i] == '/':
+                    if chars[i-1] != '(' and chars[i-1] != ')' and chars[i+1] != '(' and chars[i+1] != ')':
+                        chars.insert(i-1,'(')
+                        chars.insert(i+3, ')')
+                        total+=1
+                        break
+        print(chars)
+
         return chars
