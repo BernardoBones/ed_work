@@ -9,6 +9,8 @@ def main():
         elif select == '2':
             file_name = input('\nEscreva o nome do arquivo:\n')
             bot_arquivo(variaveis, file_name)
+        elif select.lower() == 'exit':
+            exit()
         else:
             print('\nComando inválido!\n')
 

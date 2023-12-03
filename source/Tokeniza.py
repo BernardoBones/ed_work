@@ -4,7 +4,68 @@ import re
 
 class Token():
     def __init__(self ) -> None:
-        self.SPECIALS = '()/*-–+'
+        self.SPECIALS = '()/*-+'
+
+    def _add_parenteses(self, chars:list) -> list:
+        mult = chars.count('*')
+        div = chars.count('/')
+        total = 0
+        parentheses_added = set()
+
+        while total < mult + div:
+            for i in range(len(chars)):
+                if chars[i] == '*' or chars[i] == '/':
+                    if i not in parentheses_added:
+                        try:
+                            if ((chars[i - 1] != '(' and chars[i - 1] != ')') and (chars[i + 1] != '(' and chars[i + 1] != ')') 
+                            and (chars[i - 2] != '(' and chars[i - 2] != ')') and (chars[i + 2] != '(' and chars[i + 2] != ')')):
+                                chars.insert(i - 1, '(')
+                                chars.insert(i + 3, ')')
+                                parentheses_added.add(i+1)
+                                total += 1
+                                break
+                        except IndexError:
+                            try:
+                                if (chars[i - 1] != '(' and chars[i - 1] != ')') and (chars[i + 1] != '(' and chars[i + 1] != ')'):
+                                    chars.insert(i - 1, '(')
+                                    chars.insert(i + 3, ')')
+                                    parentheses_added.add(i+1)
+                                    total += 1
+                                    break
+                            except IndexError:
+                                pass
+                total += 1
+
+        add = chars.count('+')
+        sub = chars.count('-')
+        total = 0
+        while total < add + sub:
+            for i in range(len(chars)):
+                if chars[i] == '+' or chars[i] == '-':
+                    if i not in parentheses_added:
+                        try:
+                            if ((chars[i - 1] != '(' and chars[i - 1] != ')') and (chars[i + 1] != '(' and chars[i + 1] != ')') 
+                            and (chars[i - 2] != '(' and chars[i - 2] != ')') and (chars[i + 2] != '(' and chars[i + 2] != ')')):
+                                chars.insert(i - 1, '(')
+                                chars.insert(i + 3, ')')
+                                parentheses_added.add(i+1)
+                                total += 1
+                                break
+                        except IndexError:
+                            try:
+                                if (chars[i - 1] != '(' and chars[i - 1] != ')') and (chars[i + 1] != '(' and chars[i + 1] != ')'):
+                                    chars.insert(i - 1, '(')
+                                    chars.insert(i + 3, ')')
+                                    parentheses_added.add(i+1)
+                                    total += 1
+                                    break
+                            except IndexError:
+                                pass
+                total += 1
+
+        # JUST FOR DEBUGGING
+        # print(chars)
+        return chars
 
     def _valida_expressao(self, expressao:str) -> tuple:
         """
@@ -43,7 +104,7 @@ class Token():
         resultado, chars = self._valida_expressao(expressao)
         if not resultado:
             # CASO TENHA CARACTERES INVÁLIDO
-            print(f'Erro: caracter(es) "{", ".join(chars)}" inválido(s)')
+            print(f'\nErro: caracter(es) "{", ".join(chars)}" inválido(s)\n')
             return []
 
         # SUBSTITUI POSSÍVEIS VARIÁVEIS PELOS SEUS RESPECTIVOS VALORES E CONVERTE NUMEROS PARA FLOAT
@@ -55,28 +116,7 @@ class Token():
                     if value in variaveis.keys(): # EXISTE A VARIÁVEL
                         chars[chars.index(value)] = variaveis[value]
                     else:
-                        print(f'Erro: Variável "{value}" não inicializada')
+                        print(f'\nErro: Variável "{value}" não inicializada\n')
                         return []
 
-        mult = chars.count('*')
-        div = chars.count('/')
-        total = 0
-        parentheses_added = set()
-
-        while total < mult + div:
-         
-            for i in range(len(chars)):
-                if chars[i] == '*' or chars[i] == '/':
-                    if i not in parentheses_added:
-                        if chars[i - 1] != '(' and chars[i - 1] != ')' and chars[i + 1] != '(' and chars[i + 1] != ')':
-                            chars.insert(i - 1, '(')
-                            chars.insert(i + 3, ')')
-                            parentheses_added.add(i+1)
-                            break
-                        
-                        total += 1
-                     
-
-        print(chars)
-
-        return chars
+        return self._add_parenteses(chars)
