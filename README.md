@@ -35,3 +35,15 @@ EXECUÇÃO COM INTERFACE GRÁFICA
   - Executa apenas expressões, não lê/armazena variáveis, nem trabalha com arquivos
   - Input se dá pelo usuário informar a expressão
   - Exibe a resposta na interface
+
+
+**DESAFIOS ENCONTRADOS**
+- Primeiro ponto foi como tratar a string a fim de separar seus elementos de forma que a árvore pudesse ser montada corretamente
+  - Tentamos "fazer no braço" essa tratativa, porém percebemos que estávamos evoluindo para algo muito complexo em que cada caso de teste, o algorítmo só aumentava de tamanho, então buscamos como alternativa, o RegEx
+    - Filtrando os elementos da string a partir de um padrão, e ao mesmo tempo validando o os caracteres formadores da expressão
+- Segundo ponto de dificuldade foi de que forma montaríamos a árvore, já visando que teríamos que percorre-la para realizar os cálculos, ou seja, a criação teria que ser até mais eficiente que a pesquisa
+  - Sofremos no começo até entender de que forma trabalharíamos com os operadores como valores principais dos nodos, criação e realocação de nodos...
+    - Também vale ressaltar que demoramos a entender como tratar a precedência dos () e operadores da melhor forma, optamos por criar algo de certa forma padronizado, que é feito já ao filtrar os elementos da string, abstraindo esse algortimo da criaçãpo da árvore
+      - A ideia foi que a Classe árvore apenas criasse e avaliasse a árvore, sem a necessidade de realizar algum tratamento dos dados recebidos - tokenização largando mastigado para o resto do código
+- Discutimos também como trabalharíamos com as variáveis, optamos por um dicionário "global", em que a inserção e atualização de valores pudesse se dar da forma mais dinâmica possível
+- Por fim, ponto que foi de bastante aprendizado é a organização do código. Mexemos, apagamos e criamos vários arquivos e funções, visando modularizar as partes do projeto, para que o mesmo fosse mais fácil de trabalhar e também mais fácil de ser entendido.
