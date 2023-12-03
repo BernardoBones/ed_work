@@ -1,8 +1,8 @@
 from source.Tokeniza import Token
 from source.Arvore import *
-import os
 
-def bot_expressao(variaveis:dict, expressao='', from_file=False, from_gui=False) -> None:
+
+def bot_expressao(variaveis:dict, expressao='', from_file=False, from_gui=False):
     """
     FUNÇÃO 'PRINCIPAL'
     
@@ -63,7 +63,7 @@ def bot_expressao(variaveis:dict, expressao='', from_file=False, from_gui=False)
                 if printar:
                     arvore.printar()
 
-def bot_arquivo(variaveis:dict, file='') -> None:
+def bot_arquivo(variaveis:dict, file=''):
     """
     LÊ O ARQUIVO, SALVANDO AS EXPRESSÕES EM UM VETOR E CHAMA A FUNÇÃO BOT_EXPRESSAO PARA CADA UMA DELAS
     """

@@ -11,7 +11,8 @@ class Token():
         div = chars.count('/')
         total = 0
         parentheses_added = set()
-
+        
+        # ADD PARENTESES EM MULTIPLICAÇÕES E DIVISÕES QUE POSSUAM PRECEDÊNCIA
         while total < mult + div:
             for i in range(len(chars)):
                 if chars[i] == '*' or chars[i] == '/':
@@ -36,6 +37,8 @@ class Token():
                                 pass
                 total += 1
 
+
+        # ADD PARENTESES EM ADIÇÕES E SUBTRAÇÕES QUE POSSUAM PRECEDÊNCIA
         add = chars.count('+')
         sub = chars.count('-')
         total = 0
